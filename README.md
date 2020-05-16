@@ -7,7 +7,7 @@ for the companies they apply”, so that this project will help them to build up
 providing integrated information and gives a learning scope for them.
 
    Students today currently getting information from different websites for their placements but 
-mostly them get unnecessary information and there time gets wasted to overcome such 
+mostly they get unnecessary information and there time gets wasted to overcome such 
 problem we have developed the project which provide information, material, preparation 
 videos which are suggested by experts , this implementation can be taken a step further to 
 improve learning scope.
