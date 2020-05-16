@@ -1,0 +1,247 @@
+    {% load static %}
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="static/img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Vce Recruiters</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">							
+			<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+
+			<style>
+				body {font-family: Arial, Helvetica, sans-serif;}
+				* {box-sizing: border-box;}
+				
+				/* Button used to open the chat form - fixed at the bottom of the page */
+				.open-button {
+				  background-color: #555;
+				  color: white;
+				  padding: 16px 20px;
+				  border: none;
+				  cursor: pointer;
+				  opacity: 0.8;
+				  position: fixed;
+				  bottom: 23px;
+				  right: 28px;
+				  width: 280px;
+				}
+				
+				/* The popup chat - hidden by default */
+				.chat-popup {
+				  display: none;
+				  position: fixed;
+				  bottom: 0;
+				  right: 15px;
+				  border: 3px solid #f1f1f1;
+				  z-index: 9;
+				}
+				
+				/* Add styles to the form container */
+				.form-container {
+				  max-width: 300px;
+				  padding: 10px;
+				  background-color: white;
+				}
+				
+				/* Full-width textarea */
+				.form-container textarea {
+				  width: 100%;
+				  padding: 15px;
+				  margin: 5px 0 22px 0;
+				  border: none;
+				  background: #f1f1f1;
+				  resize: none;
+				  min-height: 200px;
+				}
+				
+				/* When the textarea gets focus, do something */
+				.form-container textarea:focus {
+				  background-color: #ddd;
+				  outline: none;
+				}
+				
+				/* Set a style for the submit/send button */
+				.form-container .btn {
+				  background-color: #4CAF50;
+				  color: white;
+				  padding: 16px 20px;
+				  border: none;
+				  cursor: pointer;
+				  width: 100%;
+				  margin-bottom:10px;
+				  opacity: 0.8;
+				}
+				
+				/* Add a red background color to the cancel button */
+				.form-container .cancel {
+				  background-color: red;
+				}
+				
+				/* Add some hover effects to buttons */
+				.form-container .btn:hover, .open-button:hover {
+				  opacity: 1;
+				}
+				</style>
+		</head>
+		<body>
+			  <header id="header" id="home">
+			    <div class="container main-menu">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+						<h3 style="color: azure;">VCE RECRUITERS</h3>
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				          <li class="menu-active"><a href="home">Home</a></li>
+						  <li><a href="about">About</a></li>
+						  <li><a href="getcompanies">Get Companies</a></li>
+				          <li><a href="videos">Video Library</a></li>
+				          <li><a href="exampreparation">Exam Preparation docs</a></li>
+						  <li><a href="locations">Locations</a></li>
+						  <li><a href="learn">Learn</a></li>
+				          <li><a href="contact">Contact</a></li>
+				          <li><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">Admin Login</a></li>				              
+				        </ul>
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
+
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">
+				<div class="container">
+					<div class="overlay overlay-bg"></div>
+					<div class="row fullscreen d-flex align-items-center justify-content-start">
+						<div class="banner-content col-lg-8 col-md-12">
+							<h1 class="text-uppercase">
+								Welcome To <br>
+								Placement Training Portal.		
+							</h1>
+							
+						</div>											
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+            <button class="open-button" onclick="openForm()">Campus Drives</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Updates</h1>
+    
+
+	<div class="container">
+		{% for comp in companydrive %}
+		<p>{{comp.name}} on {{comp.date}}
+			<a href="https://calendar.google.com/calendar/r/eventedit?dates={{comp.date}}/{{comp.date}}&text={{comp.name}}&sf=true">
+				<img src="static/LOGO/calender.png" style="widows: 40px;height:40px">
+			</a>
+		  </p>
+		{% endfor %}
+	</div>
+    <!--<textarea placeholder="" name="msg" required></textarea>-->
+    <a href="http://127.0.0.1:8000/admin/login/?next=/admin/" class="btn btn-primar" >Update</a>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+<script>
+	function openForm() {
+	  document.getElementById("myForm").style.display = "block";
+	}
+	
+	function closeForm() {
+	  document.getElementById("myForm").style.display = "none";
+	}
+	</script>
+
+			<!-- Start image-carusel Area -->
+			<section class="image-carusel-area">
+				<div class="container">
+					<div class="row">
+						<div class="active-image-carusel">
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/img/tcs.png" alt="" style="widows: 262px;height:350px" >
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/oracle.png" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								
+								<img class="img-fluid" src="static/LOGO/deloitte.jpg" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/ncr.jpg" alt="" style="widows: 262px;height:350px">
+							</div>	
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/accenture.png" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/genpact.png" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/persistent.jfif" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/infosys.jpg" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/qualcomm.png" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/cognizant.png" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/adobe.png" alt="" style="widows: 262px;height:350px">
+							</div>
+							<div class="single-image-carusel">
+								<img class="img-fluid" src="static/LOGO/ibm.png" alt="" style="widows: 262px;height:350px">
+							</div>															
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End image-carusel Area -->
+			
+			
+
+
+
+
+			<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="{% static 'js/bootstrap.min.js' %}"></script>			
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  			<script src="{% static 'js/easing.min.js' %}"></script>			
+			<script src="{% static 'js/hoverIntent.js' %}"></script>
+			<script src="{% static 'js/superfish.min.js' %}"></script>	
+			<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
+			<script src="{% static 'js/owl.carousel.min.js' %}"></script>						
+			<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>							
+			<script src="{% static 'js/mail-script.js' %}"></script>	
+			<script src="{% static 'js/main.js' %}"></script>	
+		</body>
+	</html>
